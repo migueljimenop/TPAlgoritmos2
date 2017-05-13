@@ -123,7 +123,7 @@ public class Heap {
       System.out.println("El heap se encuentra vacio");
     }
   }
-
+/*
   public static void main(String[] args) {
 
     Cuadrupla c1= new Cuadrupla("c1",9,3);
@@ -161,7 +161,7 @@ public class Heap {
 
   }
 
- 
+ */
 
 }
 
