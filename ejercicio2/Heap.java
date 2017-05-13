@@ -28,18 +28,6 @@ public class Heap {
           return  arr[1];
   }
 
-    
-  public boolean inHeap( Cuadrupla x ){
-		boolean result= false;
-		for (Cuadrupla c : arr){
-			if (c == x){
-				result=true;
-				break;
-			}
-		}
-		return(result);
-	}
-
   //toma dos vertices y compara cual de sus vertices tiene el mas cercano con menos costo, devuelve 
   private int compara(Cuadrupla x, Cuadrupla y) {
     int aux = x.getValor();
@@ -119,9 +107,24 @@ public class Heap {
           return aux2;
   }
 
+  /*
+  *Este metodo toma como parametro la altura 
+  *(es a modo de pruebas, puede NO mostar todos los elementos)
+  */
+  public void muestraHeap(int altura){
+    if (!this.esVacia()){
+      System.out.println("                   raiz: "+(arr[1].getDescripcion()));
+      for (int i=1 ; i<altura; i++) {
+        System.out.print("hi de "+(arr[i].getDescripcion())+" es: "+(arr[(2*i)].getDescripcion())+" | ");
+        System.out.print("hd de "+(arr[i].getDescripcion())+" es: "+(arr[(2*i+1)].getDescripcion()));
+        System.out.println("");
+      }
+    }else{
+      System.out.println("El heap se encuentra vacio");
+    }
+  }
+
   public static void main(String[] args) {
-
-
 
     Cuadrupla c1= new Cuadrupla("c1",9,3);
     Cuadrupla c2= new Cuadrupla("c2",7,2);
@@ -140,13 +143,19 @@ public class Heap {
     h.insertar(c5);
     h.insertar(c6);
 
+    System.out.println("===========");
+    h.muestraHeap(3);
+    System.out.println("===========");
+
     Cuadrupla arr2[]= new Cuadrupla [cant];
     for (int i=0;i<cant ;i++ ) {
       arr2[i]=h.remueveMinimo();
       System.out.print(" "+(arr2[i].getDescripcion())+": "+(arr2[i].getValor())+" ->");
-
     }
     System.out.println("");
+    System.out.println("******************");
+    h.muestraHeap(3);
+    System.out.println("******************");
 
     
 
