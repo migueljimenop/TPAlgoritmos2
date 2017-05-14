@@ -40,8 +40,6 @@ public class Main{
 				Sprint aux = res.get(cont);
 				escribir.write("Sprint " + (cont+1) +": ");
 				escribir.write("\n");
-				//aux.mostrarSprint();
-				//System.out.println("");
 				Iterator<Cuadrupla> i = aux.list.iterator();
 				while(i.hasNext()){
 					escribir.write("\t"+i.next().getDescripcion());
@@ -54,51 +52,58 @@ public class Main{
 		}catch(Exception e){
 			System.out.println(e);
 		}
+	}
 
+	public static LinkedList<Sprint> lecturaArchivo(String nombre){
+		LinkedList<Sprint> result = new LinkedList<Sprint>();
+		try{
+			FileReader fr = new FileReader(nombre); 
+			BufferedReader br = new BufferedReader(fr); 
+			String s;
+			int cont = 0; 
+			while((s = br.readLine()) != null) { 
+		  		cont++;
+			}
+			// Creacion del heap con la capacidad.
+			Heap heap = new Heap(cont); 
+
+			//lectura de las lineas del archivo y creacion de las cuadruplas
+		 	fr = new FileReader("backlog.txt");
+	 		br = new BufferedReader(fr); 
+			String[] array;
+			while((s = br.readLine()) != null) { 
+				//System.out.println(s); 
+				array = divideString(s);
+				int valor = Integer.parseInt(array[1]);
+				int costo = Integer.parseInt(array[2]);
+				Cuadrupla cp = new Cuadrupla(array[0], valor, costo);
+				// Carga del heap.
+				heap.insertar(cp);		
+			}	
+
+			// Generacion de los Sprints
+			while(!heap.esVacia()){
+				//El numero 14 hace referencia a la cantidad de dias del sprint
+				Sprint spr = new Sprint(14);
+				spr.generarSprint(heap);
+				result.add(spr);
+			}
+
+			// Acceso y muestra de los Sprints
+			//accederSprint(result);
+
+			fr.close();
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		return result;
 	}
 	
 	public static void main(String[] args) throws Exception {
 		// Lectura de archivo para obtener la cantidad de tareas.
-		FileReader fr = new FileReader("backlog.txt"); 
-		BufferedReader br = new BufferedReader(fr); 
-		String s;
-		int cont = 0; 
-		while((s = br.readLine()) != null) { 
-	  		cont++;
-		}
-		// Creacion del heap con la capacidad.
-		Heap heap = new Heap(cont); 
-
-		//lectura de las lineas del archivo y creacion de las cuadruplas
-	 	fr = new FileReader("backlog.txt");
- 		br = new BufferedReader(fr); 
-		String[] array;
-		while((s = br.readLine()) != null) { 
-			//System.out.println(s); 
-			array = divideString(s);
-			int valor = Integer.parseInt(array[1]);
-			int costo = Integer.parseInt(array[2]);
-			Cuadrupla cp = new Cuadrupla(array[0], valor, costo);
-			// Carga del heap.
-			heap.insertar(cp);		
-		}	
-
-		//System.out.println("El heap tiene la longitud de: " + heap.longitud());
-
-		// Generacion de los Sprints
-		LinkedList<Sprint> result = new LinkedList<Sprint>();
-		while(!heap.esVacia()){
-			Sprint spr = new Sprint(7);
-			spr.generarSprint(heap);
-			result.add(spr);
-		}
-
-		// Acceso y muestra de los Sprints
-		//accederSprint(result);
-
-		fr.close();
+		LinkedList<Sprint> res=lecturaArchivo("backlog.txt");
 
 		//creacion de nuevo archivo
-		creacionArchivo(result);
-		}
+		creacionArchivo(res);
+	}
 }
