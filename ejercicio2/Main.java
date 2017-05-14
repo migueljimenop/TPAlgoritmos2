@@ -14,6 +14,7 @@ public class Main{
 		return res;
 	}
 	
+	/*
 	public static void accederSprint(LinkedList<Sprint> res){
 		int size = res.size();
 		int cont = 0;
@@ -24,6 +25,36 @@ public class Main{
 			//System.out.println("");
 			cont++;
 		}
+	}
+	*/
+
+	public static void creacionArchivo(LinkedList<Sprint> res){
+		try{
+			int size = res.size();
+			int cont = 0;
+			File archivo=new File("backlogOK.txt");
+			//Crear objeto FileWriter que sera el que nos ayude a escribir sobre archivo
+			FileWriter escribir=new FileWriter(archivo);
+
+			while (cont < size){
+				Sprint aux = res.get(cont);
+				escribir.write("Sprint " + (cont+1) +": ");
+				escribir.write("\n");
+				//aux.mostrarSprint();
+				//System.out.println("");
+				Iterator<Cuadrupla> i = aux.list.iterator();
+				while(i.hasNext()){
+					escribir.write("\t"+i.next().getDescripcion());
+					escribir.write("\n");
+				}
+				cont++;
+				escribir.write("\n");
+			}
+			escribir.close();	
+		}catch(Exception e){
+			System.out.println(e);
+		}
+
 	}
 	
 	public static void main(String[] args) throws Exception {
@@ -37,10 +68,6 @@ public class Main{
 		}
 		// Creacion del heap con la capacidad.
 		Heap heap = new Heap(cont); 
-
-		//System.out.println(cont);
-		//System.out.println(heap.capacidad);
-		//Separa los elementos que se leen del archivo
 
 		//lectura de las lineas del archivo y creacion de las cuadruplas
 	 	fr = new FileReader("backlog.txt");
@@ -56,7 +83,7 @@ public class Main{
 			heap.insertar(cp);		
 		}	
 
-		System.out.println("El heap tiene la longitud de: " + heap.longitud());
+		//System.out.println("El heap tiene la longitud de: " + heap.longitud());
 
 		// Generacion de los Sprints
 		LinkedList<Sprint> result = new LinkedList<Sprint>();
@@ -67,13 +94,11 @@ public class Main{
 		}
 
 		// Acceso y muestra de los Sprints
-		accederSprint(result);
-
-
+		//accederSprint(result);
 
 		fr.close();
 
 		//creacion de nuevo archivo
+		creacionArchivo(result);
 		}
-
 }
