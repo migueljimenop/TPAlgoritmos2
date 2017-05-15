@@ -8,7 +8,7 @@ Intrucciones de uso:
     luego correr con el comando "java Main".
 4-El programa generara un nuevo archivo (en la misma carpeta) llamado "backlogOK.txt" el cual contendra todas 
     las actividades agrupadas por Sprints las cuales estan maximizadas de acuerdo al valor 
-    global que representan.
+    global que representan. Luego de generarse, se abre automaticamente.
 
 Consideraciones:
 ==========
