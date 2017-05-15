@@ -69,11 +69,8 @@ public class Main{
 		// Acceso y muestra de los Sprints
 		accederSprint(result);
 
-
-
 		fr.close();
 
 		//creacion de nuevo archivo
-		}
-
+	}
 }
