@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.BufferedReader;   
 import java.util.LinkedList;
 import java.util.Iterator;
+import java.lang.Runtime;
 
 
 public class Main{
@@ -108,13 +109,15 @@ public class Main{
 	public static void main(String[] args) throws Exception {
 		try{
 		// Lectura de archivo para obtener la cantidad de tareas.
-		LinkedList<Sprint> res=lecturaArchivo("backlog.txt");
+		LinkedList<Sprint> res = lecturaArchivo("backlog.txt");
 
 		// Creacion de nuevo archivo
 		creacionArchivo(res);
 
 		// Mensaje de que se efectuo correctamente
-		System.out.println("done! :)");
+		System.out.println("Abriendo el archivo backlogOK.txt");
+
+		Process p = Runtime.getRuntime().exec ("sublime backlogOK.txt"); 
 
 		}catch(Exception e){
 			System.out.println(e);
