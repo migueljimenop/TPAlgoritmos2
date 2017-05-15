@@ -30,7 +30,7 @@ public class Main{
 			aux.mostrarSprint();
 			//System.out.println("");
 			cont++;
-		}
+		} 
 	}
 	*/
 
