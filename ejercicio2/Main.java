@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.util.LinkedList;
 import java.util.Iterator;
 import java.lang.Runtime;
+import 
 
 
 public class Main{
@@ -117,8 +118,14 @@ public class Main{
 		// Mensaje de que se efectuo correctamente
 		System.out.println("Abriendo el archivo backlogOK.txt");
 
-		Process p = Runtime.getRuntime().exec ("sublime backlogOK.txt"); 
-
+		// Deteccion de sistema operativo para la apertura del editor de texto con el 
+		// backlog ordenado.
+		String sys = System.getProperty("os.name");
+		switch (sys){
+			case "Linux": Process p = Runtime.getRuntime().exec ("subl backlogOK.txt"); break;
+			case "Mac OS X": Process p = Runtime.getRuntime().exec ("sublime backlogOK.txt"); break;  
+		}
+		
 		}catch(Exception e){
 			System.out.println(e);
 		}
