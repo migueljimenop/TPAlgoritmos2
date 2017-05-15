@@ -1,0 +1,18 @@
+Intrucciones de uso:
+============
+1- Coloque un archivo de texto de nombre "backlog" con la extension .txt en la carpeta 
+    que contiene los archivos. 
+2- El archivo "backlog.txt" debe tener el siguiente formato:
+      'La descripcion entre comillas simples' valor costo
+3- Abrir una consola en la carpeta y compilar usando el comando "javac Main.java",
+    luego correr con el comando "java Main".
+4-El programa generara un nuevo archivo (en la misma carpeta) llamado "backlogOK.txt" el cual contendra todas 
+    las actividades agrupadas por Sprints las cuales estan maximizadas de acuerdo al valor 
+    global que representan.
+
+Consideraciones:
+==========
+* Notar que la descripcion, valor y costo estan separadas por espacios.
+* Consideramos  que el rango de los valores de las actividades del scrum estan comprendidos entre 1 y 5,
+   que el costo se expresa en cantidad de dias y que cada Sprint posee una duracion de 14 dias.
+* Adjuntamos un ejemplo del "backlog.txt" de su formato. El mismo puede ser probado.
