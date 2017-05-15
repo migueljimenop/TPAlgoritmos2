@@ -5,8 +5,6 @@ import java.io.BufferedReader;
 import java.util.LinkedList;
 import java.util.Iterator;
 import java.lang.Runtime;
-import 
-
 
 public class Main{
 	
@@ -122,8 +120,10 @@ public class Main{
 		// backlog ordenado.
 		String sys = System.getProperty("os.name");
 		switch (sys){
-			case "Linux": Process p = Runtime.getRuntime().exec ("subl backlogOK.txt"); break;
-			case "Mac OS X": Process p = Runtime.getRuntime().exec ("sublime backlogOK.txt"); break;  
+			case "Linux": Process linux = Runtime.getRuntime().exec ("subl backlogOK.txt"); 
+			break;
+			case "Mac OS X": Process mac = Runtime.getRuntime().exec ("sublime backlogOK.txt"); 
+			break;  
 		}
 		
 		}catch(Exception e){
