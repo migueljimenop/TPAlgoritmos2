@@ -24,7 +24,6 @@ generateDeltas :: Int -> Delta -> [Delta]
 generateDeltas 0 f = []
 generateDeltas n f = (subconjLimitado n f) ++ (generateDeltas (n-1) f)
 
-
 {-
     Hace la prueba sobre un delta  para cada caracter del string a reconocer(o no).
     Dado un caracter, un estado inicial y un delta retorna true si el caracter es reconocido por ese delta
@@ -43,6 +42,7 @@ pertenece x [] = False
 pertenece x (y:ys)   
                               | x == y  = True
                               | otherwise = pertenece x ys
+
 {-
     Funcion que en base a una cadena, un sigma, un estado inicial, un estado final y un delta,
     determina si la cadena es reconocido por el delta. 
@@ -53,6 +53,7 @@ recibe (x:xs) e ei ef d
       | pertenece x e = ((fst st)) && (recibe xs e (snd st) ef d)  
       | otherwise        = False
       where st = pruebaDelta x ei d
+
 {-
     Funcion que evalua si una cadena cumple con un delta en particular
     Los parametros que recibe son: 
@@ -75,6 +76,7 @@ filtraDeltas [] = True
 filtraDeltas (x:xs) 
                 | (length xs) == 0  = True 
                 | otherwise  = (validaDelta x xs) && filtraDeltas xs
+
 {-
     Funcion que busca el primer delta que verifique que se cumplan todas las cadenas positivas y no las negativas
     La funcion toma como parametros:
