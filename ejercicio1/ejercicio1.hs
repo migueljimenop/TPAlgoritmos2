@@ -4,6 +4,7 @@
     ((estado del cual se parte, caracter involucrado), estado final)
 -}
 type Delta = [((Int,Char),Int)] 
+
 type DFA = ([Int],[Char],Delta,Int,Int)  --(conjunto de estados, sigma, delta, estado inicial, estado final)
 
 -- Retorna todos los subconjuntos limitada con una longitud
